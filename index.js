@@ -6,20 +6,19 @@ const sortAllBtn = document.querySelector("#sortAll");
 const oddsNumbers = document.querySelector("#odds output");
 const evenNumbers = document.querySelector("#evens output");
 
-// Retrieve the numbers from local storage
+// Retrieve the numbers from sessionStorage storage
 const storedNumbers = JSON.parse(sessionStorage.getItem("numberBank")) || [];
 const numberBank = [...storedNumbers]; // Passing all the numbers from the local storage.
 const oddNumArray = []; // Initial array for odd Numbers
 const evenNumArray = []; // Initial array for even Numbers
 
-console.log(storedNumbers);
 // When the user clicks the "Add Number" button, the number they entered into the input field is added to the number bank.
 function addToNumberBank() {
     const number = parseInt(inputNumber.value);
     numberBank.push(number);
     inputNumber.value = "";
     updateNumberList();
-    updateLocalStorage();
+    updateSessionStorage();
 }
 
 // The number bank displays all the numbers the user has entered.
@@ -61,8 +60,8 @@ function sortOneNum() {
     }
 }
 
-// Save the numbers to local storage
-function updateLocalStorage() {
+// Save the numbers to  sessionStorage storage
+function updateSessionStorage() {
     sessionStorage.setItem("numberBank", JSON.stringify(numberBank));
 }
 
